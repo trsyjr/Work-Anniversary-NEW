@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronRight, FaArrowLeft } from "react-icons/fa6";
-import celebMusic from "../assets/celeb.mp3";
+import celebMusic from "../assets/Celeb.mp3";
 
 export default function WorkAnniversary({ celebrant }) {
   const [stage, setStage] = useState(1);
