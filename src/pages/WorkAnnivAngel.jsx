@@ -27,6 +27,18 @@ import THEA from '../assets/angel/THEA.JPG';
 import PERRINE from '../assets/angel/PERRINE.JPG';
 import AKI from '../assets/angel/AKI.JPG';
 import CJ from '../assets/angel/Ako.JPG';
+import JENA from '../assets/angel/Jena.JPG';
+import MEANN from '../assets/angel/Meann.JPG';
+import MERL from '../assets/angel/Merl.JPG';
+import NOREEN from '../assets/angel/NData.JPG';
+import EDD from '../assets/angel/Edd.JPG';
+import CLA from '../assets/angel/Clarrisa.JPG';
+import PAO from '../assets/angel/pao.png';
+import NIC from '../assets/angel/Nicole.jpeg';
+import DC from '../assets/angel/DCJ.JPG';
+import MINA from '../assets/angel/Carmina.JPG';
+import LYKA from '../assets/angel/Lyka.JPG';
+import NANCY from '../assets/angel/Nancy.JPG';
 
 // CRITICAL PERFORMANCE FIX: Declared entirely outside the component function scope. 
 // This object is now evaluated exactly once on load, instead of creating heavy new memory allocations on every re-render loop.
@@ -72,7 +84,20 @@ const ANGEL_CELEBRANT_DATA = {
     },
     { 
       from: "Jesica", 
-      text: "Happy First Work Anniversary, Angel! Cheers! 🥂🥂", 
+      text: (
+        <>
+          Hi Angel!<br />
+          Happy First Work Anniversary!<br /><br />
+          
+          You truly add color to our team with your charming personality. I admire how calm you are in everything you do, and how you <span className="text-emerald-400 font-semibold">consistently deliver your work with excellence</span>.<br /><br />
+          
+          Although we haven’t had the chance to work together in training, I can see how responsible, dependable, and humble you are. I also admire how cool a <span className="text-amber-300">fur parent</span> you are! Most of all, I am amazed by the way you pray—a reflection of how centered your life is in our Lord Jesus Christ.<br /><br />
+          
+          Thank you for being such an inspiring colleague. I wish you nothing but the best and many more fruitful and fulfilling years with us.<br /><br />
+          
+          Congratulations on your first work anniversary! 💙✨
+        </>
+      ), 
       avatar: JES
     },
     { 
@@ -104,6 +129,66 @@ const ANGEL_CELEBRANT_DATA = {
       from: "CJ", 
       text: "Happy Work Anniversary Beshyyy, Maging masaya ka!", 
       avatar: CJ
+    },
+    { 
+      from: "Jena", 
+      text: "Happy Work Anniv!! Thank youu kasi isa ka sa nagpapasaya sa team! Bongga ang lahat ng contributions, hard work, and commitment mo for the PLDS and Academy. Happy Work Anniv ulit!! ", 
+      avatar: JENA
+    },
+    { 
+      from: "Marry Ann", 
+      text: "Thank you for being such a sweet person. I'm happy to be working with you. Cheers to more years in service.", 
+      avatar: MEANN
+    },
+    { 
+      from: "Merl", 
+      text: "One year na ’yun? Parang kailan lang, chismis pa lang ang “working with DA,” tapos ngayon isang taon ka na palang naghahasik ng bonggang energy sa amin. XD  Happy Work Anniversary, Mamii! My heart is full because you’re here with us. What a blessing to have you in our corner.  Thank you for being reliable, driven, funny, joyful, and safe. You inspire me to do better — partly kasi napaka-competitive mo 😂 but really, your excellence pushes us to level up too.  So grateful for the opportunity to work with you. Wishing you more happiness, success, and blessings ahead.  I love youuu. 🤍🫶", 
+      avatar: MERL
+    },
+    { 
+      from: "Noreen", 
+      text: "Happy Work Anniversary, Sir Angel! Isang beses pa lang tayo nagkakasama sa training pero nakita ko po kung gaano ka kagaling at kagaan ka-trabaho. Thank you rin po sa pagbibigay ng happiness sa section natin! hahahaha Stay healthy, happy, and ingat po palagiii <3 May God bless you always po!", 
+      avatar: NOREEN
+    },
+    { 
+      from: "Edd", 
+      text: "Happy 1st Work Anniversary, BFF, and our BEST BREAD FRIEND, Sir Angel! 🍞💚  Thank you for your existence and for being such an amazing person, katrabaho, and friend. Your kindness, humor, and genuine support make the workplace lighter and more meaningful every day. May you continue to grow, inspire others, and “rise” toward greater blessings and achievements ahead. We’re truly grateful to have you in our lives — stay soft and freshly baked always! ✨", 
+      avatar: EDD
+    },
+    { 
+      from: "Cla", 
+      text: "Happy work anniversary!!! Naka 365 days around the sun na ang iyong professional life together with CBD-PLDS. I hope you will continue to shine and soar in what ever you do. Congratulations!!", 
+      avatar: CLA
+    },
+    { 
+      from: "Pao", 
+      text: "Dear AngleSuper idol de xiàoróng dōu méi nǐ de tián Bā yuè zhèngwǔ de yángguāng dōu méi nǐ yàoyǎn Rè'ài 105 dù de nǐ Dī dī qīngchún de xhēngliúshuǐ. wala palang enter dito amp. Drink water. Pati dogs. Not drink dogs, but make dogs drink water ganern ", 
+      avatar: PAO
+    },
+    { 
+      from: "Nic", 
+      text: "Happy work anniversary, my Viefef! Ang tanging nakakachikahan ko pag dating sa drag race hahahaha. I wish you continued success viefef ko, alam ng naka naka mo na to ang iyong angking galing at talino, kinakaya mo mamangha hindi lamang ang iyong mga kasamahan sa trabaho kung di pati ang mga pax na ating binibigyan serbisyo. Continue shining, kaso nga lang sabi ni Mirabel sa kanyang awitin, stars don't shine they burn, kaya dont forget to take care of yourself, heartburn? Mag Kremil-S ka na.", 
+      avatar: NIC
+    },
+    { 
+      from: "DC Joesa", 
+      text: "Hi Gandang Angel! Congratulations to your Work Anniversary! I am so grateful you are part of us in the CBD-PLDS/DA. The work is more colorful, joyful and meaningful because of your light and beautiful presence. Please continue to be competent in doing your job and the untiring commitment to serve through the CBD-PLDS. Let me know if you have concerns so I may be of help. Godbless you more!", 
+      avatar: DC
+    },
+    { 
+      from: "Carmina", 
+      text: "Hello My Katukayo! Grabe ka Happy Work Anniversary sa iyo! Grabe ka naman. Time flies so fast! Ang dami mo nang nagawa at gagawin pa para sa bayan. Sana sama-sama lang tayo hanggang sa walang hanggan. Sana masaya ka pa rito, Sis?! Ahahaha. Kidding aside, nawa palagi kang masaya sa ginagawa mo. Deserve naman siguro natin kumita ng pera habang natutuwa sa buhay na ito. At syempre, stay healthy ka palagi! To many more years in service with you (Insert hand gesture ni Swoh Duts).", 
+      avatar: MINA
+    },
+    { 
+      from: "Lyka", 
+      text: "Happy Work Anniversary Geeeeel! Proud ako sayo sa lahat ng hard work at achievements mo. Deserve mo lahat ng blessings at success na meron ka ngayon. Salamat sa pagiging isa sa mga dose of happiness namin sa CBD. Salamat sa bohay mo! 💗", 
+      avatar: LYKA
+    },
+    { 
+      from: "Nancy", 
+      text: "Congratulations Angel! Wishing you continued success!", 
+      avatar: NANCY
     },
   ]
 };
