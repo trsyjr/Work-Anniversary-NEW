@@ -93,7 +93,6 @@ export default function WorkAnniversary({ celebrant }) {
       const containerHeight = 550; 
 
       const cardWidth = window.innerWidth < 640 ? 290 : 360; 
-      // Adjusted cardHeight boundary limits upwards slightly to perfectly balance the new padding logic
       const cardHeight = window.innerWidth < 640 ? 200 : 170;
 
       const maxX = Math.max(24, containerWidth - cardWidth - 24);
@@ -157,11 +156,9 @@ export default function WorkAnniversary({ celebrant }) {
   return (
     <div className={`w-full min-h-screen relative font-sans bg-gradient-to-tr ${theme.gradient || 'from-slate-900 to-slate-950'}`}>
       
-      {/* Background Static Glow Layers */}
       <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[140px] pointer-events-none z-0" />
 
-      {/* Floating Particle Canvas */}
       {stage === 1 && (
         <div className="fixed inset-0 w-screen h-screen overflow-hidden pointer-events-none z-40">
           {decorativeElements.balloons.map((balloon) => (
@@ -198,7 +195,6 @@ export default function WorkAnniversary({ celebrant }) {
 
       <AnimatePresence mode="wait">
         {stage === 1 ? (
-          /* --- STAGE 1: FIXED HERO HOME --- */
           <motion.section 
             key="intro"
             initial={{ opacity: 1 }}
@@ -219,19 +215,17 @@ export default function WorkAnniversary({ celebrant }) {
                 onClick={handleGoToStage2}
                 className={`w-full sm:w-[320px] py-3.5 text-white font-black rounded-full shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex justify-center items-center gap-3 text-sm md:text-base tracking-widest uppercase bg-gradient-to-r ${theme.btn || 'bg-white text-black'}`}
               >
-                Celebrate with him <FaChevronRight className="text-xs" />
+                Celebrate with {nickname} <FaChevronRight className="text-xs" />
               </button>
             </div>
           </motion.section>
         ) : (
-          /* --- STAGE 2: NATURAL SCROLL HUB --- */
           <motion.section 
             key="hub"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="absolute inset-0 w-full min-h-screen flex flex-col items-center pt-24 pb-12 z-10 overflow-y-auto overflow-x-hidden scrollbar-hidden"
           >
-            {/* FIXED STICKY NAVIGATION */}
             <div className="fixed top-6 left-6 z-50">
               <button 
                 onClick={handleGoToStage1} 
@@ -254,7 +248,7 @@ export default function WorkAnniversary({ celebrant }) {
             <div className="text-center px-6 max-w-5xl mb-10">
               <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{name}</h2>
               <p className="text-white text-sm md:text-base font-semibold mt-3 bg-white/10 backdrop-blur-md px-5 py-1.5 rounded-full inline-block border border-white/20">
-                Celebrating {anniversaryNumber} year of excellence
+                Celebrating {anniversaryNumber} years of excellence
               </p>
             </div>
 
@@ -310,7 +304,6 @@ export default function WorkAnniversary({ celebrant }) {
                       className="absolute z-40 drop-shadow-2xl will-change-transform"
                       style={{ left: `${msg.rawX}px`, top: `${msg.rawY}px` }}
                     >
-                      {/* Changed p-5 to pt-5 px-5 pb-7 to give a deeper cushion at the bottom */}
                       <div className="bg-white pt-5 px-5 pb-7 rounded-3xl rounded-bl-none shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] flex items-start gap-4 w-[290px] sm:w-[360px] border border-gray-100 h-auto">
                         <img 
                           src={msg.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&h=120&q=80"} 

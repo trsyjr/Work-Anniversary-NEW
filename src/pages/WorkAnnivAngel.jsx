@@ -117,7 +117,7 @@ const ANGEL_CELEBRANT_DATA = {
     },
     { 
       from: "Perrine", 
-      text: "Happy Work Anniversary, Geeeeeel!!  Seeing you grow in this role from day one has been such a privilege. I’ve seen all the hard work, the stress, and the heart you put into everything you do—you truly make the hardest days look easy. Sobrang swerte ng mga opisinang napupuntahan mo but I’m the luckiest because I get to see all the behind-the-scenes of your brilliance.  You’re an inspiration and a total rockstar, but more importantly, thank you for being the reason I don't quit every Monday! HAHAHAHAHAHAHAHAHAHA. I’m so proud of the professional you’ve become and even prouder to be alongside with yaaaaaa. Cheers to many more years of you killing it (at pag survive sa work together wahahahaha)! Love you forever and always sis!", 
+      text: "Happy Work Anniversary, Geeeeel!!  Seeing you grow in this role from day one has been such a privilege. I’ve seen all the hard work, the stress, and the heart you put into everything you do—you truly make the hardest days look easy. Sobrang swerte ng mga opisinang napupuntahan mo but I’m the luckiest because I get to see all the behind-the-scenes of your brilliance.  You’re an inspiration and a total rockstar, but more importantly, thank you for being the reason I don't quit every Monday! HAHAHAHAHAHAHAHAHAHA. I’m so proud of the professional you’ve become and even prouder to be alongside with yaaaaaa. Cheers to many more years of you killing it (at pag survive sa work together wahahahaha)! Love you forever and always sis!", 
       avatar: PERRINE
     },
     { 
