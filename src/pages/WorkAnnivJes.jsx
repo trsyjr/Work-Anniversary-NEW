@@ -55,10 +55,11 @@ import NANCY from '../assets/angel/Nancy.JPG';
 
 
 const JES_CELEBRANT_DATA = {
-  name: "Ms. Jesica S. Mencias",
+  name: "Jesica S. Mencias", // Prefix removed here so the dynamic component applies it cleanly
   nickname: "Jes",
+  gender: "female", // Added to control dynamic title selection
   anniversaryNumber: "2nd",
-  avatar: Profile, // Ensure this points to Jes's profile image
+  avatar: Profile, 
   
   theme: {
     gradient: "from-emerald-800 via-teal-700 to-emerald-900",
@@ -77,7 +78,6 @@ const JES_CELEBRANT_DATA = {
     WA13, WA14, WA15, WA16, WA17, WA18, WA19, WA20, WA21, WA22, WA25, WA26
   ],
 
-  // --- UPDATE THESE MESSAGES FOR JES ---
   messages: [
     { 
       from: "Althea", 
@@ -98,13 +98,7 @@ const JES_CELEBRANT_DATA = {
       from: "LJ", 
       text: "Ms Jes has a positive attitude and helps the team work in harmony. ", 
       avatar: LJ 
-    },
-    // { 
-    //   from: "", 
-    //   text: "", 
-    //   avatar: 
-    // },
-    // Add all your messages here
+    }
   ]
 };
 

@@ -13,6 +13,7 @@ export default function WorkAnniversary({ celebrant }) {
   const {
     name = "Employee",
     nickname = "Team Member",
+    gender = "", // Accepted parameters: "male" | "female"
     anniversaryNumber = "1st",
     avatar = "",
     theme = { 
@@ -26,6 +27,19 @@ export default function WorkAnniversary({ celebrant }) {
     carouselImagesRow2 = [],
     messages = []
   } = celebrant || {};
+
+  // Compute prefix additions cleanly based on the provided gender flag
+  const formattedName = useMemo(() => {
+    if (gender?.toLowerCase() === "female" && !name.startsWith("Ms. ")) return `Ms. ${name}`;
+    if (gender?.toLowerCase() === "male" && !name.startsWith("Mr. ")) return `Mr. ${name}`;
+    return name;
+  }, [name, gender]);
+
+  const formattedNickname = useMemo(() => {
+    if (gender?.toLowerCase() === "female" && !nickname.startsWith("Ms. ")) return `Ms. ${nickname}`;
+    if (gender?.toLowerCase() === "male" && !nickname.startsWith("Mr. ")) return `Mr. ${nickname}`;
+    return nickname;
+  }, [nickname, gender]);
 
   const partyColors = useMemo(() => [
     "#FF0055", "#00FFCC", "#9900FF", "#FFCC00", 
@@ -206,7 +220,7 @@ export default function WorkAnniversary({ celebrant }) {
                 HAPPY WORK ANNIVERSARY,
               </h1>
               <h2 className="text-2xl sm:text-4xl md:text-[3.2rem] font-black text-white tracking-tight leading-none uppercase mt-2 drop-shadow-md">
-                {name}
+                {formattedName}
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-gray-200/90 mt-4 mb-8 font-normal tracking-wide max-w-2xl leading-relaxed">
                 {shortPraise}
@@ -215,7 +229,7 @@ export default function WorkAnniversary({ celebrant }) {
                 onClick={handleGoToStage2}
                 className={`w-full sm:w-[320px] py-3.5 text-white font-black rounded-full shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex justify-center items-center gap-3 text-sm md:text-base tracking-widest uppercase bg-gradient-to-r ${theme.btn || 'bg-white text-black'}`}
               >
-                Celebrate with {nickname} <FaChevronRight className="text-xs" />
+                Celebrate with {formattedNickname} <FaChevronRight className="text-xs" />
               </button>
             </div>
           </motion.section>
@@ -240,13 +254,13 @@ export default function WorkAnniversary({ celebrant }) {
             {avatar && (
               <div className="relative mb-8 group">
                 <div className="absolute -inset-6 bg-white/5 rounded-full blur-3xl opacity-75 pointer-events-none" />
-                <img src={avatar} className="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover border-[10px] border-white/10 shadow-2xl" alt={name} />
+                <img src={avatar} className="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover border-[10px] border-white/10 shadow-2xl" alt={formattedName} />
               </div>
             )}
 
             {/* Profile Banner */}
             <div className="text-center px-6 max-w-5xl mb-10">
-              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{name}</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{formattedName}</h2>
               <p className="text-white text-sm md:text-base font-semibold mt-3 bg-white/10 backdrop-blur-md px-5 py-1.5 rounded-full inline-block border border-white/20">
                 Celebrating {anniversaryNumber} years of excellence
               </p>
@@ -255,7 +269,7 @@ export default function WorkAnniversary({ celebrant }) {
             {/* Long Dedication Card */}
             {longDedication && (
               <div className="bg-black/20 backdrop-blur-xl mx-6 p-8 md:p-12 rounded-[2rem] max-w-5xl text-center mb-16 shadow-2xl border border-white/10 relative z-10">
-                <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">Happy Work Anniversary, {nickname}!</h3>
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">Happy Work Anniversary, {formattedNickname}!</h3>
                 <p className="text-white/90 text-base md:text-lg leading-relaxed font-normal">{longDedication}</p>
               </div>
             )}

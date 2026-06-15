@@ -45,6 +45,7 @@ import NANCY from '../assets/angel/Nancy.JPG';
 const ANGEL_CELEBRANT_DATA = {
   name: "Mr. Mark Angel Malapira",
   nickname: "Angel",
+  gender: "Male",
   anniversaryNumber: "1st",
   avatar: Profile, 
   
