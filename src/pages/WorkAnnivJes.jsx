@@ -3,32 +3,32 @@ import WorkAnniversary from '../components/WorkAnniversary';
 
 import Profile from '../assets/jes/Jesica.JPG'; 
 import WA1 from '../assets/jes/WAJes1.jpg';
-import WA2 from '../assets/jes/WAJes2.jpg'; 
-import WA3 from '../assets/jes/WAJes3.jpg'; 
-import WA4 from '../assets/jes/WAJes4.jpg'; 
-import WA5 from '../assets/jes/WAJes5.JPG'; 
-import WA6 from '../assets/jes/WAJes6.JPG'; 
-import WA7 from '../assets/jes/WAJes7.JPG'; 
-import WA8 from '../assets/jes/WAJes8.JPG'; 
+import WA2 from '../assets/jes/WAJes2.jpg';
+import WA3 from '../assets/jes/WAJes3.PNG';
+import WA4 from '../assets/jes/WAJes4.jpg';
+import WA5 from '../assets/jes/WAJes5.JPG';
+import WA6 from '../assets/jes/WAJes6.JPG';
+import WA7 from '../assets/jes/WAJes7.JPG';
+import WA8 from '../assets/jes/WAJes8.JPG';
 import WA9 from '../assets/jes/WAJes9.JPG';
-import WA10 from '../assets/jes/WAJes10.JPG'; 
-import WA11 from '../assets/jes/WAJes11.JPG'; 
-import WA12 from '../assets/jes/WAJes12.JPG'; 
-import WA13 from '../assets/jes/WAJes13.JPG'; 
-import WA14 from '../assets/jes/WAJes14.JPG'; 
-import WA15 from '../assets/jes/WAJes15.jpg'; 
-import WA16 from '../assets/jes/WAJes16.JPG'; 
-import WA17 from '../assets/jes/WAJes17.jpg'; 
+import WA10 from '../assets/jes/WAJes10.JPG';
+import WA11 from '../assets/jes/WAJes11.JPG';
+import WA12 from '../assets/jes/WAJes12.JPG';
+import WA13 from '../assets/jes/WAJes13.JPG';
+import WA14 from '../assets/jes/WAJes14.JPG';
+import WA15 from '../assets/jes/WAJes15.jpg';
+import WA16 from '../assets/jes/WAJes16.JPG';
+import WA17 from '../assets/jes/WAJes17.jpg';
 import WA18 from '../assets/jes/WAJes18.jpg';
-import WA19 from '../assets/jes/WAJes19.jpg'; 
-import WA20 from '../assets/jes/WAJes20.jpg'; 
-import WA21 from '../assets/jes/WAJes21.jpg'; 
-import WA22 from '../assets/jes/WAJes22.jpg'; 
-import WA23 from '../assets/jes/WAJes23.jpg'; 
+import WA19 from '../assets/jes/WAJes19.jpeg';
+import WA20 from '../assets/jes/WAJes20.jpeg';
+import WA21 from '../assets/jes/WAJes21.jpg';
+import WA22 from '../assets/jes/WAJes22.jpeg';
+import WA23 from '../assets/jes/WAJes23.jpeg';
 import WA24 from '../assets/jes/WAJes24.JPG';
-import WA25 from '../assets/jes/WAJes25.jpg'; 
-import WA26 from '../assets/jes/WAJes26.jpg'; 
-import WA27 from '../assets/jes/WAJes27.JPG'; 
+import WA25 from '../assets/jes/WAJes25.jpeg';
+import WA26 from '../assets/jes/WAJes26.jpg';
+import WA27 from '../assets/jes/WAJes27.JPG';
 
 import LJ from '../assets/angel/LJ.JPG';
 import ALJOHN from '../assets/angel/ALJOHN.JPG';
@@ -72,7 +72,7 @@ const JES_CELEBRANT_DATA = {
   longDedication: "Thank you for another incredible year of dedication and excellence. Your exceptional work ethic and commitment to quality consistently raise the bar for our entire team. We are incredibly fortunate to have you with us, and we look forward to many more years of shared success and great memories. Cheers to your special day!",
 
   carouselImagesRow1: [
-    WA1, WA2, WA3, WA4, WA5, WA6, WA7, WA8, WA9, WA10, WA11, WA12, WA24
+    WA1, WA2, WA3, WA4, WA5, WA6, WA7, WA8, WA9, WA10, WA11, WA12, WA24, WA27
   ],
   carouselImagesRow2: [
     WA13, WA14, WA15, WA16, WA17, WA18, WA19, WA20, WA21, WA22, WA25, WA26
