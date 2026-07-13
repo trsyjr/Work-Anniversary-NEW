@@ -46,7 +46,7 @@ import KENT from '../assets/comments/Kent.JPG';
 import ANGEL from '../assets/comments/ANGEL.JPG';
 
 const ORCHID_CELEBRANT_DATA = {
-  name: "Orchid Bibit-Ocampo", 
+  name: "Orchid Bibit", 
   nickname: "O",
   gender: "female", 
   anniversaryNumber: "2nd",
@@ -59,7 +59,16 @@ const ORCHID_CELEBRANT_DATA = {
     btn: "from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-bold shadow-md transition-all duration-200"
   },
 
-  shortPraise: "To the Ultimate Super Mom—at Home and at Work From being an extraordinary, devoted super mom at home to anchoring the CBD-PLDS team with your brilliant mind and international-level prowess, you do it all with unmatched grace. Your sharp intellect, talent, and reliable leadership inspire us daily. Thank you for being the heart and anchor of our team; your passion, global vision, and boundless commitment mean the world to us.",
+  shortPraise: (
+  <>
+    To the Ultimate Super Mom—at Home and at Work <br />
+    From being an extraordinary, devoted super mom at home to anchoring the CBD-PLDS team 
+    with your brilliant mind and international-level prowess, you do it all with unmatched grace. 
+    Your sharp intellect, talent, and reliable leadership inspire us daily. Thank you for being 
+    the heart and anchor of our team; your passion, global vision, and boundless commitment 
+    mean the world to us.
+  </>
+),
 
   longDedication: "Happy Work Anniversary to the incredible Ms. O! Whether she is being an extraordinary, devoted super mom at home or guiding the CBD-PLDS division with her sharp intellect and international-level prowess, she manages it all with absolute grace. Ms. O works tirelessly to elevate our team, bringing world-class talent and creative vision to everything she touches while always prioritizing our collective well-being. Thank you, Ms. O, for your reliable leadership, your inspiring passion, and for ensuring that everyone in our division feels celebrated, connected, and valued!",
 
