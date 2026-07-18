@@ -41,17 +41,22 @@ const DATA_MAPPING = {
 };
 
 function App() {
-  // REMOVED DATA_MAPPING.mina from this list to hide her from the Catalog HUD
-  const activeCelebrantsList = [DATA_MAPPING.jesica, DATA_MAPPING.angel, DATA_MAPPING.orchid];
+  // Added DATA_MAPPING.mina back to the list to display her in the Catalog HUD
+  const activeCelebrantsList = [
+    DATA_MAPPING.jesica, 
+    DATA_MAPPING.mina, 
+    DATA_MAPPING.angel, 
+    DATA_MAPPING.orchid
+  ];
   
-  const [selectedId, setSelectedId] = useState("orchid");
+  const [selectedId, setSelectedId] = useState("mina");
 
   const renderCelebrantPage = () => {
     switch (selectedId) {
       case "jesica":
         return <WorkAnnivJes />;
       case "mina":
-        return <WorkAnnivMina />; // Kept in background logic for when you want to unhide her later
+        return <WorkAnnivMina />;
       case "angel":
         return <WorkAnnivAngel />;
       case "orchid":
