@@ -16,10 +16,10 @@ import WA11 from '../assets/nic/WAnic11.jpg';
 import WA12 from '../assets/nic/WAnic12.jpg'; 
 import WA13 from '../assets/nic/WAnic13.jpg'; 
 import WA14 from '../assets/nic/WAnic14.jpg'; 
-import WA15 from '../assets/nic/WAnic15.JPG'; 
-import WA16 from '../assets/nic/WAnic16.JPG';
-import WA17 from '../assets/nic/WAnic17.JPG'; 
-import WA18 from '../assets/nic/WAnic18.JPG'; 
+import WA15 from '../assets/nic/WAnic15.jpg'; 
+import WA16 from '../assets/nic/WAnic16.jpg';
+import WA17 from '../assets/nic/WAnic17.jpg'; 
+import WA18 from '../assets/nic/WAnic18.jpg'; 
 
 import LJ from '../assets/comments/LJ.JPG';
 import ALJOHN from '../assets/comments/ALJOHN.JPG';
