@@ -4,16 +4,24 @@ import WorkAnnivAngel from './pages/WorkAnnivAngel';
 import WorkAnnivJes from './pages/WorkAnnivJes';
 import WorkAnnivMina from './pages/WorkAnnivMina'; 
 import WorkAnnivOrchid from './pages/WorkAnnivOrchid';
+import WorkAnnivNic from './pages/WorkAnnivNic';
 import Catalog from './components/Catalog';
 
 import JesAvatar from './assets/jes/Jesica.JPG';
 import AngelAvatar from './assets/angel/ProfileAngel.JPG';
 import MinaAvatar from './assets/mina/MinaProfile.JPG';
 import OrchidAvatar from './assets/orchid/OProfile.JPG';
+import NicAvatar from './assets/nic/ProfileNic.JPG';
 
 import './App.css';
 
 const DATA_MAPPING = {
+  nic: { 
+    id: "nic",
+    nickname: "Nic",
+    anniversaryNumber: "1st",
+    avatar: NicAvatar 
+  },
   orchid: { 
     id: "orchid",
     nickname: "Orchid",
@@ -23,7 +31,7 @@ const DATA_MAPPING = {
   mina: { 
     id: "mina",
     nickname: "Mina",
-    anniversaryNumber: "2nd",
+    anniversaryNumber: "3rd",
     avatar: MinaAvatar 
   },
   jesica: {
@@ -46,10 +54,11 @@ function App() {
     DATA_MAPPING.jesica, 
     DATA_MAPPING.mina, 
     DATA_MAPPING.angel, 
-    DATA_MAPPING.orchid
+    DATA_MAPPING.orchid,
+    DATA_MAPPING.nic,
   ];
   
-  const [selectedId, setSelectedId] = useState("mina");
+  const [selectedId, setSelectedId] = useState("nic");
 
   const renderCelebrantPage = () => {
     switch (selectedId) {
@@ -61,6 +70,8 @@ function App() {
         return <WorkAnnivAngel />;
       case "orchid":
         return <WorkAnnivOrchid />;
+        case "nic":
+        return <WorkAnnivNic />;
       default:
         return <WorkAnnivOrchid />;
     }
