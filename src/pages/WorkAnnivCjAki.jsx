@@ -224,7 +224,7 @@ const AKI_CELEBRANT_DATA = {
     btn: "from-rose-500 to-red-600 text-white font-bold shadow-lg hover:from-rose-600 hover:to-red-700"
   },
 
-  shortPraise: "Today, we celebrate our two amazing angels—our Art Angel, Ruby, and our Angel in the Red Vest, CJ! Happy 1st Work Anniversary! May this be the first of many more meaningful years with the DSWD Academy. Wishing you continued success, fulfillment, and countless more milestones ahead!",
+  shortPraise: "Today, we celebrate our two amazing angels—our Art Angel, Ruby, and our Angel in Red Vest, CJ! Happy 1st Work Anniversary! May this be the first of many more meaningful years with the DSWD Academy. Wishing you continued success, fulfillment, and countless more milestones ahead!",
 
   longDedication: "🎨 Happy 1st Work Anniversary, Ms. Ruby! To our Art Angel Ruby—your creativity, wit, humor, and unwavering dependability have been such a gift to our section. From your beautiful artworks to your clever ideas (and those unforgettable GIFs that never fail to make us laugh), you bring color and joy to everything you do. Your incredible talents continue to amaze us—you truly seem to have a gift for everything you set your mind to. Beyond your skills, your willingness to lend a helping hand and your positive spirit make you an invaluable member of our team. Thank you for making our workplace brighter, more creative, and more enjoyable. We are truly blessed to have you with us. Here's to many more years of creating, inspiring, and making people smile! 💙",
 
