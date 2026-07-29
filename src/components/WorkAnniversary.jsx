@@ -3,43 +3,58 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronRight, FaArrowLeft } from "react-icons/fa6";
 import celebMusic from "../assets/Celeb.mp3";
 
-export default function WorkAnniversary({ celebrant }) {
+export default function WorkAnniversary({ celebrant, celebrants: initialCelebrants, initialIndex = 0 }) {
   const [stage, setStage] = useState(1);
+  const [activeCelebrantIndex, setActiveCelebrantIndex] = useState(initialIndex);
   const [activeMessages, setActiveMessages] = useState([]);
   
   const audioRef = useRef(null);
   const containerRef = useRef(null);
 
-  const {
-    name = "Employee",
-    nickname = "Team Member",
-    gender = "", // Accepted parameters: "male" | "female"
-    anniversaryNumber = "1st",
-    avatar = "",
-    theme = { 
-      gradient: "from-slate-900 to-slate-950", 
-      accent: "text-white",
-      btn: "bg-white text-black hover:bg-gray-100"
-    },
-    shortPraise = "A celebration of dedication, passion, and excellence at work.",
-    longDedication = "",
-    carouselImagesRow1 = [],
-    carouselImagesRow2 = [],
-    messages = []
-  } = celebrant || {};
+  // Sync active index whenever initialIndex prop changes dynamically from catalog selection
+  useEffect(() => {
+    if (typeof initialIndex === "number" && !isNaN(initialIndex)) {
+      setActiveCelebrantIndex(initialIndex);
+    }
+  }, [initialIndex]);
 
-  // Compute prefix additions cleanly based on the provided gender flag
-  const formattedName = useMemo(() => {
-    if (gender?.toLowerCase() === "female" && !name.startsWith("Ms. ")) return `Ms. ${name}`;
-    if (gender?.toLowerCase() === "male" && !name.startsWith("Mr. ")) return `Mr. ${name}`;
-    return name;
-  }, [name, gender]);
+  // Normalize celebrants prop into a clean array
+  const celebrantsList = useMemo(() => {
+    if (Array.isArray(initialCelebrants) && initialCelebrants.length > 0) {
+      return initialCelebrants;
+    }
+    if (celebrant && typeof celebrant === "object") {
+      return [celebrant];
+    }
+    return [];
+  }, [celebrant, initialCelebrants]);
 
-  const formattedNickname = useMemo(() => {
-    if (gender?.toLowerCase() === "female" && !nickname.startsWith("Ms. ")) return `Ms. ${nickname}`;
-    if (gender?.toLowerCase() === "male" && !nickname.startsWith("Mr. ")) return `Mr. ${nickname}`;
-    return nickname;
-  }, [nickname, gender]);
+  // Helper to format names with gender prefixes
+  const formatNameWithPrefix = useCallback((name = "", gender = "") => {
+    const trimmed = name.trim();
+    if (gender?.toLowerCase() === "female" && !trimmed.toLowerCase().startsWith("ms.")) return `Ms. ${trimmed}`;
+    if (gender?.toLowerCase() === "male" && !trimmed.toLowerCase().startsWith("mr.")) return `Mr. ${trimmed}`;
+    return trimmed;
+  }, []);
+
+  // Compute aggregated joined titles for stage 1 header
+  const combinedFormattedNames = useMemo(() => {
+    const names = celebrantsList.map((c) => formatNameWithPrefix(c.name || "Employee", c.gender));
+    if (names.length === 0) return "EMPLOYEE";
+    if (names.length === 1) return names[0];
+    if (names.length === 2) return `${names[0]} AND ${names[1]}`;
+    return `${names.slice(0, -1).join(", ")}, AND ${names[names.length - 1]}`;
+  }, [celebrantsList, formatNameWithPrefix]);
+
+  const currentCelebrant = celebrantsList[activeCelebrantIndex] || celebrantsList[0] || {};
+
+  const activeFormattedName = useMemo(() => {
+    return formatNameWithPrefix(currentCelebrant.name || "Employee", currentCelebrant.gender);
+  }, [currentCelebrant, formatNameWithPrefix]);
+
+  const activeFormattedNickname = useMemo(() => {
+    return formatNameWithPrefix(currentCelebrant.nickname || "Team Member", currentCelebrant.gender);
+  }, [currentCelebrant, formatNameWithPrefix]);
 
   const partyColors = useMemo(() => [
     "#FF0055", "#00FFCC", "#9900FF", "#FFCC00", 
@@ -68,7 +83,8 @@ export default function WorkAnniversary({ celebrant }) {
     return { confettis, balloons };
   }, [partyColors]);
 
-  const handleGoToStage2 = useCallback(() => {
+  const handleGoToStage2 = useCallback((index = 0) => {
+    setActiveCelebrantIndex(index);
     setStage(2);
     if (!audioRef.current) {
       audioRef.current = new Audio(celebMusic);
@@ -96,9 +112,11 @@ export default function WorkAnniversary({ celebrant }) {
     };
   }, []);
 
-  // NON-OVERLAPPING FLOATING ENGINE (SCATTERED EDGE-TO-EDGE)
+  // Floating engine for messages
+  const activeMessagesSource = currentCelebrant.messages || [];
+
   useEffect(() => {
-    if (stage !== 2 || messages.length === 0) return;
+    if (stage !== 2 || activeMessagesSource.length === 0) return;
     
     let index = 0;
 
@@ -138,8 +156,8 @@ export default function WorkAnniversary({ celebrant }) {
           }
         }
 
-        const currentMsg = messages[index];
-        const uniqueId = `${currentMsg.from}-${Date.now()}`;
+        const currentMsg = activeMessagesSource[index];
+        const uniqueId = `${currentMsg?.from || 'anon'}-${Date.now()}`;
 
         const newSms = { 
           ...currentMsg, 
@@ -155,7 +173,7 @@ export default function WorkAnniversary({ celebrant }) {
         return updated;
       });
 
-      index = (index + 1) % messages.length;
+      index = (index + 1) % activeMessagesSource.length;
     };
 
     triggerNextSMS();
@@ -165,13 +183,35 @@ export default function WorkAnniversary({ celebrant }) {
       clearInterval(interval);
       setActiveMessages([]);
     };
-  }, [stage, messages]);
+  }, [stage, activeMessagesSource]);
+
+  // Dynamic stage background gradient engine
+  const backgroundGradientClass = useMemo(() => {
+    // Stage 2: Always use the specific active celebrant's color theme
+    if (stage === 2) {
+      return currentCelebrant.theme?.gradient || "from-emerald-600 to-teal-800";
+    }
+
+    // Stage 1 Landing Page: Dynamic based on catalog selection
+    if (celebrantsList.length === 1) {
+      // Single person selected (e.g. Jes, Mina, Angel) -> use their specific background gradient!
+      return celebrantsList[0].theme?.gradient || "from-emerald-600 via-teal-600 to-emerald-900";
+    } 
+
+    if (celebrantsList.length === 2) {
+      // Specifically CJ and Aki mixed -> Red and Orange blend!
+      return "from-red-600 via-orange-500 to-amber-500";
+    }
+
+    // Default fallback if multiple people are selected
+    return currentCelebrant.theme?.gradient || "from-orange-500 via-red-500 to-amber-600";
+  }, [stage, currentCelebrant, celebrantsList]);
 
   return (
-    <div className={`w-full min-h-screen relative font-sans bg-gradient-to-tr ${theme.gradient || 'from-slate-900 to-slate-950'}`}>
+    <div className={`w-full min-h-screen relative font-sans bg-gradient-to-tr ${backgroundGradientClass} transition-all duration-700 ease-in-out`}>
       
-      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/5 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[140px] pointer-events-none z-0" />
 
       {stage === 1 && (
         <div className="fixed inset-0 w-screen h-screen overflow-hidden pointer-events-none z-40">
@@ -216,30 +256,44 @@ export default function WorkAnniversary({ celebrant }) {
             className="fixed inset-0 w-screen h-screen flex flex-col justify-center items-center text-center p-6 z-10 overflow-hidden touch-none"
           >
             <div className="w-full max-w-4xl px-4 flex flex-col items-center">
-              <h1 className="text-[1.5rem] sm:text-[2.2rem] md:text-[2.8rem] font-black text-white tracking-tight leading-none uppercase w-full overflow-hidden text-ellipsis drop-shadow-sm">
+              <h1 className="text-[1.3rem] sm:text-[2rem] md:text-[2.5rem] font-black text-white tracking-tight leading-none uppercase w-full overflow-hidden text-ellipsis drop-shadow-sm">
                 HAPPY WORK ANNIVERSARY,
               </h1>
-              <h2 className="text-2xl sm:text-4xl md:text-[3.2rem] font-black text-white tracking-tight leading-none uppercase mt-2 drop-shadow-md">
-                {formattedName}
+              <h2 className="text-xl sm:text-3xl md:text-[3rem] font-black text-white tracking-tight leading-tight uppercase mt-3 drop-shadow-md">
+                {combinedFormattedNames}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-gray-200/90 mt-4 mb-8 font-normal tracking-wide max-w-2xl leading-relaxed">
-                {shortPraise}
+              <p className="text-sm sm:text-base md:text-lg text-gray-100/90 mt-4 mb-8 font-normal tracking-wide max-w-2xl leading-relaxed">
+                {celebrantsList[0]?.shortPraise || "A celebration of dedication, passion, and excellence at work."}
               </p>
-              <button 
-                onClick={handleGoToStage2}
-                className={`w-full sm:w-[320px] py-3.5 text-white font-black rounded-full shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex justify-center items-center gap-3 text-sm md:text-base tracking-widest uppercase bg-gradient-to-r ${theme.btn || 'bg-white text-black'}`}
-              >
-                Celebrate with {formattedNickname} <FaChevronRight className="text-xs" />
-              </button>
+
+              {/* Dynamic Buttons for Celebrants */}
+              <div className="flex flex-wrap justify-center gap-4 w-full max-w-2xl">
+                {celebrantsList.map((item, idx) => {
+                  const nicknameFormatted = formatNameWithPrefix(item.nickname || item.name, item.gender);
+                  const btnGradientClass = item.theme?.btn || "from-white to-gray-200 text-black";
+                  return (
+                    <button 
+                      key={idx}
+                      onClick={() => handleGoToStage2(idx)}
+                      className={`flex-1 min-w-[240px] py-3.5 px-6 font-black rounded-full shadow-2xl hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 flex justify-center items-center gap-3 text-sm md:text-base tracking-widest uppercase bg-gradient-to-r ${btnGradientClass}`}
+                    >
+                      Celebrate with {nicknameFormatted} <FaChevronRight className="text-xs" />
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </motion.section>
         ) : (
           <motion.section 
-            key="hub"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            key={`hub-${activeCelebrantIndex}`}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
             className="absolute inset-0 w-full min-h-screen flex flex-col items-center pt-24 pb-12 z-10 overflow-y-auto overflow-x-hidden scrollbar-hidden"
           >
+            {/* Home Navigation */}
             <div className="fixed top-6 left-6 z-50">
               <button 
                 onClick={handleGoToStage1} 
@@ -251,42 +305,51 @@ export default function WorkAnniversary({ celebrant }) {
             </div>
 
             {/* Avatar Profile */}
-            {avatar && (
+            {currentCelebrant.avatar && (
               <div className="relative mb-8 group">
-                <div className="absolute -inset-6 bg-white/5 rounded-full blur-3xl opacity-75 pointer-events-none" />
-                <img src={avatar} className="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover border-[10px] border-white/10 shadow-2xl" alt={formattedName} />
+                <div className="absolute -inset-6 bg-white/10 rounded-full blur-3xl opacity-75 pointer-events-none" />
+                <img 
+                  src={currentCelebrant.avatar} 
+                  className="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover border-[10px] border-white/10 shadow-2xl" 
+                  alt={activeFormattedName} 
+                />
               </div>
             )}
 
             {/* Profile Banner */}
             <div className="text-center px-6 max-w-5xl mb-10">
-              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{formattedName}</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{activeFormattedName}</h2>
               <p className="text-white text-sm md:text-base font-semibold mt-3 bg-white/10 backdrop-blur-md px-5 py-1.5 rounded-full inline-block border border-white/20">
-                Celebrating {anniversaryNumber} year of excellence
+                Celebrating {currentCelebrant.anniversaryNumber || "1st"} year of excellence
               </p>
             </div>
 
             {/* Long Dedication Card */}
-            {longDedication && (
-              <div className="bg-black/20 backdrop-blur-xl mx-6 p-8 md:p-12 rounded-[2rem] max-w-5xl text-center mb-16 shadow-2xl border border-white/10 relative z-10">
-                <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">Happy Work Anniversary, {formattedNickname}!</h3>
-                <p className="text-white/90 text-base md:text-lg leading-relaxed font-normal">{longDedication}</p>
+            {currentCelebrant.longDedication && (
+              <div className="bg-white/10 backdrop-blur-xl mx-6 p-8 md:p-12 rounded-[2rem] max-w-5xl text-center mb-16 shadow-2xl border border-white/20 relative z-10">
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-white">
+                  Happy Work Anniversary, {activeFormattedNickname}!
+                </h3>
+                <p className="text-white/95 text-base md:text-lg leading-relaxed font-normal whitespace-pre-line">
+                  {currentCelebrant.longDedication}
+                </p>
               </div>
             )}
 
             {/* Image Marquees */}
-            {(carouselImagesRow1.length > 0 || carouselImagesRow2.length > 0) && (
+            {((currentCelebrant.carouselImagesRow1 && currentCelebrant.carouselImagesRow1.length > 0) || 
+              (currentCelebrant.carouselImagesRow2 && currentCelebrant.carouselImagesRow2.length > 0)) && (
               <div className="w-full mb-14 origin-center -rotate-1 scale-101 select-none pointer-events-none relative z-10 overflow-x-clip">
-                {carouselImagesRow1.length > 0 && (
+                {currentCelebrant.carouselImagesRow1?.length > 0 && (
                   <div className="animate-marquee-big-left gap-6 py-2 bg-white/5 backdrop-blur-sm border-y border-white/5 flex">
-                    {[...carouselImagesRow1, ...carouselImagesRow1].map((img, i) => (
+                    {[...currentCelebrant.carouselImagesRow1, ...currentCelebrant.carouselImagesRow1].map((img, i) => (
                       <img key={i} src={img} alt="Gallery item" className="h-44 w-72 md:h-52 md:w-[340px] object-cover rounded-2xl border-2 border-white/10 shadow-xl flex-shrink-0" />
                     ))}
                   </div>
                 )}
-                {carouselImagesRow2.length > 0 && (
+                {currentCelebrant.carouselImagesRow2?.length > 0 && (
                   <div className="animate-marquee-big-right gap-6 py-2 bg-white/5 backdrop-blur-sm border-b border-white/5 mt-4 flex">
-                    {[...carouselImagesRow2, ...carouselImagesRow2].map((img, i) => (
+                    {[...currentCelebrant.carouselImagesRow2, ...currentCelebrant.carouselImagesRow2].map((img, i) => (
                       <img key={i} src={img} alt="Gallery item" className="h-44 w-72 md:h-52 md:w-[340px] object-cover rounded-2xl border-2 border-white/10 shadow-xl flex-shrink-0" />
                     ))}
                   </div>
@@ -294,7 +357,7 @@ export default function WorkAnniversary({ celebrant }) {
               </div>
             )}
 
-            {/* ❤️ AUTO-EXPANDING COLLISION-FREE FLOATING MESSAGES ARENA */}
+            {/* Floating Messages Arena */}
             <div className="w-full pt-12 pb-20 bg-white/5 backdrop-blur-xl border-t border-white/10 flex flex-col items-center z-10 mt-auto overflow-visible relative">
               <div className="text-center max-w-5xl px-6 mb-8">
                 <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight uppercase">
@@ -302,7 +365,6 @@ export default function WorkAnniversary({ celebrant }) {
                 </h2>
               </div>
 
-              {/* The full viewport width container allows edge-to-edge scattering */}
               <div 
                 ref={containerRef}
                 className="relative w-screen min-h-[550px] mx-auto overflow-visible"
@@ -328,7 +390,7 @@ export default function WorkAnniversary({ celebrant }) {
                           <span className="text-[11px] font-black uppercase tracking-wider mb-1 truncate text-slate-500">
                             {msg.from}
                           </span>
-                          <p className="text-gray-800 text-xs sm:text-sm font-semibold leading-relaxed break-words whitespace-normal pr-1 h-auto">
+                          <p className="text-gray-800 text-xs sm:text-sm font-semibold leading-relaxed break-words whitespace-pre-line pr-1 h-auto">
                             "{msg.text}"
                           </p>
                         </div>

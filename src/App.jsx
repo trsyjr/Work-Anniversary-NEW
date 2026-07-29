@@ -5,6 +5,7 @@ import WorkAnnivJes from './pages/WorkAnnivJes';
 import WorkAnnivMina from './pages/WorkAnnivMina'; 
 import WorkAnnivOrchid from './pages/WorkAnnivOrchid';
 import WorkAnnivNic from './pages/WorkAnnivNic';
+import WorkAnnivCjAki from './pages/WorkAnnivCjAki';
 import Catalog from './components/Catalog';
 
 import JesAvatar from './assets/jes/Jesica.JPG';
@@ -12,6 +13,8 @@ import AngelAvatar from './assets/angel/ProfileAngel.JPG';
 import MinaAvatar from './assets/mina/MinaProfile.JPG';
 import OrchidAvatar from './assets/orchid/OProfile.JPG';
 import NicAvatar from './assets/nic/ProfileNic.JPG';
+import CjAvatar from './assets/cj/ProfileCj.JPG';    
+import AkiAvatar from './assets/aki/ProfileAki.JPG';  
 
 import './App.css';
 
@@ -45,20 +48,33 @@ const DATA_MAPPING = {
     nickname: "Angel",
     anniversaryNumber: "1st",
     avatar: AngelAvatar 
+  },
+  // Combined entry for CJ & Aki in the Catalog
+  cjAki: {
+    id: "cj-ruby",
+    nickname: "CJ & Ruby",
+    anniversaryNumber: "1st",
+    avatar: CjAvatar, // Primary fallback avatar
+    avatars: [CjAvatar, AkiAvatar], // Dual avatar support
+    theme: {
+      gradient: "from-red-600 via-rose-600 to-orange-500",
+      btn: "from-red-500 to-orange-500"
+    }
   }
 };
 
 function App() {
-  // Added DATA_MAPPING.mina back to the list to display her in the Catalog HUD
   const activeCelebrantsList = [
     DATA_MAPPING.jesica, 
     DATA_MAPPING.mina, 
     DATA_MAPPING.angel, 
     DATA_MAPPING.orchid,
     DATA_MAPPING.nic,
+    DATA_MAPPING.cjAki, // Renders the combined CJ & Aki item on Catalog
   ];
   
-  const [selectedId, setSelectedId] = useState("nic");
+  // Default selected ID
+  const [selectedId, setSelectedId] = useState("cj-ruby");
 
   const renderCelebrantPage = () => {
     switch (selectedId) {
@@ -70,8 +86,15 @@ function App() {
         return <WorkAnnivAngel />;
       case "orchid":
         return <WorkAnnivOrchid />;
-        case "nic":
+      case "nic":
         return <WorkAnnivNic />;
+      
+      // Handles CJ, Aki, or combined "cj-aki" selection
+      case "cj":
+      case "ruby":
+      case "cj-ruby":
+        return <WorkAnnivCjAki initialSelected={selectedId} />;
+      
       default:
         return <WorkAnnivOrchid />;
     }
