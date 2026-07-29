@@ -85,9 +85,9 @@ const CJ_CELEBRANT_DATA = {
     btn: "from-amber-400 to-orange-600 text-white font-bold shadow-lg hover:from-amber-500 hover:to-orange-700"
   },
 
-  shortPraise: "Today, we celebrate our two amazing angels—our Art Angel, Ruby, and our Angel in the Red Vest, CJ! Happy 1st Work Anniversary! May this be the first of many more meaningful years with the DSWD Academy. Wishing you continued success, fulfillment, and countless more milestones ahead!",
+  shortPraise: "Today, we celebrate our two amazing angels—our Art Angel, Ruby, and our Angel in Red Vest, CJ! Happy 1st Work Anniversary! May this be the first of many more meaningful years with the DSWD Academy. Wishing you continued success, fulfillment, and countless more milestones ahead!",
 
-  longDedication: "❤️ Happy 1st Work Anniversary, CJ! To our Angel in the Red Vest (ARV)—you have an incredible way of making even the most challenging tasks look effortless. Whenever we encounter a technical concern or need a digital solution, we know we can always count on you. Thank you for your countless innovations, your expertise, and your dedication to helping our section continuously improve. Your contributions behind the scenes have made a significant impact and have helped our section stand out in so many ways. We deeply appreciate your patience, reliability, and willingness to support everyone. Thank you for making things possible and for always going the extra mile. We are grateful to have you as part of our team!",
+  longDedication: "❤️ Happy 1st Work Anniversary, CJ! To our Angel in Red Vest (ARV)—you have an incredible way of making even the most challenging tasks look effortless. Whenever we encounter a technical concern or need a digital solution, we know we can always count on you. Thank you for your countless innovations, your expertise, and your dedication to helping our section continuously improve. Your contributions behind the scenes have made a significant impact and have helped our section stand out in so many ways. We deeply appreciate your patience, reliability, and willingness to support everyone. Thank you for making things possible and for always going the extra mile. We are grateful to have you as part of our team!",
 
   carouselImagesRow1: [
     C1, C2, C3, C4, C5,
