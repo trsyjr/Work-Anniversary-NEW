@@ -111,6 +111,26 @@ const NANCY_CELEBRANT_DATA = {
       text: "For me talaga nakaka inspire yung pagiging calm and mahinhin niya. Grace under pressure ang atake and hoping na kaya ko rin yan. Kahit anong bigat ng work eh nakikita ko na kaya nya ihandle. Also, wow yung 21 years sa dswd?? talagang nakaka inspire. How to be u po? paano tumagal nang ganyan? Happy Work Anniv po Ms. Nancyyyy!! <3 \n\n-Jena Mae", 
       avatar: JENA 
     },
+    { 
+      from: "Eddniel", 
+      text: "I hope Ms. Nancy never changes her kind and caring heart. Ramdam ko po ang inyong tunay na malasakit at kabutihan sa bawat isa sa amin, at iyon ang isa sa mga bagay na labis naming pinahahalagahan. 💚 Happy 21st Work Anniversary, Ms. Nancy! Maraming salamat po sa inyong tapat na paglilingkod, dedikasyon, at kabutihang loob para sa taumbayan. Your warmth, humility, and genuine concern for others continue to make a positive difference in the lives of the people around you. Nawa'y patuloy pa po kayong pagpalain ng mabuting kalusugan, tagumpay, at marami pang makabuluhang taon ng paglilingkod. Congratulations once again on this remarkable milestone, Ms Nancy. Padayon! 🌻", 
+      avatar: EDD 
+    },
+    { 
+      from: "Jes", 
+      text: "The Silent Worker Award! She works silently but gets things done :) Hi Ms. Nancy, happy 21st work anniversary! Grabe po ang 21 years! Salamat po sa iyong serbisyo sa bayan at sa Academy! Super appreciate po namin ang warm presence ninyo. Salamat po sa malasakit sa team, Ms. Nance and for always being there if may need na assistance! We know na marami pa po kayong years of service na ibabahagi sa  bayan at marami pa po kaming matutunan sa inyo. Cheers, Ms. Nance! ", 
+      avatar: JES 
+    },
+    { 
+      from: "Noreen", 
+      text: "Kung ihahalintulad ko po si Ms. Nancy sa isang aktres, siya po ay si Jaclyn Jose. Katulad po niya, si Ms. Nancy ay may tahimik ngunit matatag na presensya. May natural po siyang grace at authenticity na nagbibigay ng respeto at paghanga sa mga taong nakakasalamuha po niya. Happy 21st Work Anniversary po, Ms. Nancy! 🎉 Thank you po sa inyong dedication. Dalangin ko po ang patuloy ninyong tagumpay, mabuting kalusugan, at mas marami pang biyaya at masasayang memories.", 
+      avatar: NOREEN 
+    },
+    { 
+      from: "Jops", 
+      text: "Si Ms. Nancy po ay tahimik lang pero biglang magbibitaw ng super witty/funny na hirit out of nowhere na natatawa na lang kaming lahat!", 
+      avatar: JOPS 
+    },
   ]
 };
 
