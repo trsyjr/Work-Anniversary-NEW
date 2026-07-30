@@ -44,7 +44,7 @@ const NANCY_CELEBRANT_DATA = {
   name: "Nancy E. Fortes", 
   nickname: "Nancy",
   gender: "female", 
-  anniversaryNumber: "21st",
+  anniversaryNumber: "21",
   avatar: Profile, 
   
   // Clean mid-tone yellow theme designed to pair beautifully with white text layout layers
