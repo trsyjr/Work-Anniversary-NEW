@@ -238,7 +238,7 @@ const AKI_CELEBRANT_DATA = {
   messages: [
     { 
       from: "Joy", 
-      text: "Hello, Sir CJ! It was nice meeting you po. I hope we get along well, and I’m looking forward to learning a lot from you throughout my journey here at the Academy. Wishing you all the best in life, and I hope you continue to enjoy what you do. May God bless you always, as well as your family. God bless po!", 
+      text: "Annyeong, Ms. Ruby! It was nice meeting you po. 😊 I hope we get along well, and I’m looking forward to learning a lot from you throughout my journey here at the Academy. Wishing you all the best, and may God continue to bless you and grant the desires of your heart. God bless po! 💙", 
       avatar: JOY 
     },
     { 
@@ -349,7 +349,7 @@ const AKI_CELEBRANT_DATA = {
     { 
       from: "Kleng", 
       text: "Siguro ano sha,,,, hahahaha, di ako maka imbento ng titile pero si Ruby ang naiisip ko rito sa book na 'The Renaissance Soul' self-help book ito para sa mga multipotentialite kagaya ni Ruby. Ang laman ng book ay mga strategies papaanong ma-enrich o ma-keep ang mga interests/passion sabay sabay ganern. Nakakatuwa si Ruby, apaka sipag at apaka creative sa work. More work to come??? Chariisss hahhaahah. Happy Work Anniv! Keep it up Rubyroseeee <3", 
-      avatar: JOY 
+      avatar: KLENG 
     },
     { 
       from: "Meann", 

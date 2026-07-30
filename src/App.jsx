@@ -6,6 +6,7 @@ import WorkAnnivMina from './pages/WorkAnnivMina';
 import WorkAnnivOrchid from './pages/WorkAnnivOrchid';
 import WorkAnnivNic from './pages/WorkAnnivNic';
 import WorkAnnivCjAki from './pages/WorkAnnivCjAki';
+import WorkAnnivNancy from './pages/WorkAnnivNancy'
 import Catalog from './components/Catalog';
 
 import JesAvatar from './assets/jes/Jesica.JPG';
@@ -14,7 +15,8 @@ import MinaAvatar from './assets/mina/MinaProfile.JPG';
 import OrchidAvatar from './assets/orchid/OProfile.JPG';
 import NicAvatar from './assets/nic/ProfileNic.JPG';
 import CjAvatar from './assets/cj/ProfileCj.JPG';    
-import AkiAvatar from './assets/aki/ProfileAki.JPG';  
+import AkiAvatar from './assets/aki/ProfileAki.JPG';
+import NancyAvatar from './assets/nancy/NancyProfile.JPG'  
 
 import './App.css';
 
@@ -60,7 +62,13 @@ const DATA_MAPPING = {
       gradient: "from-red-600 via-rose-600 to-orange-500",
       btn: "from-red-500 to-orange-500"
     }
-  }
+  },
+  nancy: {
+    id: "nancy",
+    nickname: "Nancy",
+    anniversaryNumber: "21st",
+    avatar: NancyAvatar 
+  },
 };
 
 function App() {
@@ -70,11 +78,12 @@ function App() {
     DATA_MAPPING.angel, 
     DATA_MAPPING.orchid,
     DATA_MAPPING.nic,
-    DATA_MAPPING.cjAki, // Renders the combined CJ & Aki item on Catalog
+    DATA_MAPPING.cjAki,
+    DATA_MAPPING.nancy
   ];
   
   // Default selected ID
-  const [selectedId, setSelectedId] = useState("cj-ruby");
+  const [selectedId, setSelectedId] = useState("nancy");
 
   const renderCelebrantPage = () => {
     switch (selectedId) {
@@ -94,6 +103,9 @@ function App() {
       case "ruby":
       case "cj-ruby":
         return <WorkAnnivCjAki initialSelected={selectedId} />;
+
+      case "nancy":
+        return <WorkAnnivNancy />;
       
       default:
         return <WorkAnnivOrchid />;
