@@ -320,7 +320,7 @@ export default function WorkAnniversary({ celebrant, celebrants: initialCelebran
             <div className="text-center px-6 max-w-5xl mb-10">
               <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{activeFormattedName}</h2>
               <p className="text-white text-sm md:text-base font-semibold mt-3 bg-white/10 backdrop-blur-md px-5 py-1.5 rounded-full inline-block border border-white/20">
-                Celebrating {currentCelebrant.anniversaryNumber || "1st"} year of excellence
+                Celebrating {currentCelebrant.anniversaryNumber || "1st"} years of excellence
               </p>
             </div>
 
