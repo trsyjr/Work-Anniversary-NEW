@@ -54,9 +54,9 @@ const NANCY_CELEBRANT_DATA = {
     btn: "from-[#FFCBA4] to-[#FFB7A1] hover:from-[#FFB7A1] hover:to-[#FF9EAA] text-stone-800 font-bold shadow-md transition-all duration-200"
   },
 
-  shortPraise: "Today, we celebrate not just the time you have dedicated to your role, but the profound impact of your passion and exceptional management. Your unwavering reliability shines through in everything you do—making you a steadfast pillar of support not only to your family and parents but also a deeply valued asset to the entire CBD-PLDS.",
+  shortPraise: "Today, we celebrate someone who might be quiet, but whose impact speaks volumes. Between being an amazing mom and the person everyone knows they can count on at work, you handle it all with so much grace and kindness. We are so lucky to have you on the team!",
 
-  longDedication: "Happy Work Anniversary! It is said that yellow is the color of optimism, energy, and joy—and it is the perfect reflection of how you bright and shine like the sun every single day. Your radiant passion for your work lights up the entire workplace, making you a true celebrity in the CBD-PLDS. You are a beacon of reliability, serving as a dependable pillar of strength for your parents and a brilliant star for our entire team. Thank you for bringing so much warmth, dedication, and sunshine into everything you do. May your year ahead continue to be just as bright!",
+  longDedication: "Happy Work Anniversary! Your calm presence, kind heart, and warm smile make you effortlessly approachable to everyone you meet. Thank you for balancing family, motherhood, and work with such dedication and grace. We are so grateful to have your gentle warmth on our team!",
 
   carouselImagesRow1: [
     N1, N2, N3, N4,
